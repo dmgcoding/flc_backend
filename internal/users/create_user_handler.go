@@ -6,6 +6,8 @@ import (
 	"net/http"
 )
 
+const SampleJwtToken = "32|9cSNrbjAeq6lwD4Uefi5k47nRHksQb7XhsciId1Uf65cfa89"
+
 func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Body == nil {
 		myUtils.RespondWithError(w, http.StatusBadRequest, "body can't be empty")
@@ -27,6 +29,8 @@ func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	newUser.AccessToken = SampleJwtToken
+
 	UsersSlice = append(UsersSlice, newUser)
 
 	type successMsg struct {
@@ -34,5 +38,4 @@ func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	myUtils.RespondWithJson(w, http.StatusCreated, successMsg{Msg: "User created successfully!"})
-
 }
