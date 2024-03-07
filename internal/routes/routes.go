@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"flc_backend/internal/notifications"
 	"flc_backend/internal/users"
 
 	"github.com/go-chi/chi/v5"
@@ -22,6 +23,9 @@ func NewRouter() *chi.Mux {
 	//users
 	router.Post("/api/v1/createUser", users.CreateUserHandler)
 	router.Post("/api/v1/userLogin", users.UserLoginHandler)
+
+	//get notices
+	router.Get("/api/v1/notifications", notifications.GetNotificationsHandler)
 
 	return router
 }
