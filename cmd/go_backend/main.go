@@ -4,18 +4,17 @@ import (
 	"flc_backend/internal/routes"
 	"log"
 	"net/http"
-	"os"
-
-	"github.com/joho/godotenv"
 )
 
 func main() {
-	godotenv.Load()
+	// godotenv.Load()
 
-	portString := os.Getenv("PORT")
-	if portString == "" {
-		log.Fatal("port string is not provided.\n")
-	}
+	// portString := os.Getenv("PORT")
+	// if portString == "" {
+	// 	log.Fatal("port string is not provided.\n")
+	// }
+
+	portString := "8181"
 
 	srv := &http.Server{
 		Addr:    ":" + portString,
